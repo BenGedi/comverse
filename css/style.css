@@ -448,7 +448,7 @@ div[to-top]{
 	z-index: 10;
 	height: 31px;
 	background: #2D2D2D;
-	top:-31px;
+	top:-32px;
 	border-top-left-radius:6px;
 	border-top-right-radius:6px; 
 	border-bottom: 1px solid grey;
