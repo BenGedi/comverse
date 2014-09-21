@@ -421,7 +421,7 @@ nav[menu-nav] a[link="navigation"]:hover{
 [menu-dropdown]{
 	height: auto;
 	margin: 0;
-	padding: 25px 0 5px;
+	padding: 25px 0;
 	list-style: none;
 	-webkit-background-clip: padding-box;
 	-moz-background-clip: padding;
