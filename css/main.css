@@ -437,7 +437,7 @@ nav[menu-nav] a[link="navigation"]:hover{
 	top: 101%;
 	left: -225px;
 	z-index: 1;
-	visibility: hidden;
+	display: none;
 }
 div[menu-dropdown] ul[dropdown-col]{
 	height: auto;
@@ -472,7 +472,7 @@ div[menu-dropdown] ul[dropdown-col] li{
 	background: url("../img/line_nav_video.png") no-repeat scroll 0 center;
 }
 nav[menu-nav] [list~="navigation"] li:hover [menu-dropdown]{
-	visibility: visible;
+	display: block;
 }
 li:hover [menu-dropdown="2"] ul:first-child{
 	margin: 0 0 0 24px;
