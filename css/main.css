@@ -398,10 +398,6 @@ nav[menu-nav] [list~="navigation"] li{
 	margin: 0;
 	z-index: 2;
 	position: relative;
-	-webkit-box-sizing:border-box;
-  -moz-box-sizing:border-box;
-  -ms-box-sizing:border-box;
-  box-sizing:border-box;
 }
 ul[list~="navigation"] li{
 	font: 13px Arial;
@@ -413,19 +409,16 @@ nav[menu-nav] a {
 	display: block;
 }
 nav[menu-nav] ul[list~="navigation"] li:hover{	
-	-webkit-box-sizing:border-box;
-  -moz-box-sizing:border-box;
-  -ms-box-sizing:border-box;
-  box-sizing:border-box;
 	background: #fcfcfc;	
-	/*border: 1px solid #D5D5D5;*/
 	z-index: 10;
 	-webkit-box-shadow: -5px 9px 8px rgba(0,0,0,0.4),inset 0px 0px 0px 1px rgba(213,213,213,1);
 	box-shadow: -5px 9px 8px rgba(0,0,0,0.4),inset 0px 0px 0px 1px rgba(213,213,213,1);	
-	/*-webkit-box-shadow: inset 0px 0px 0px 1px rgba(213,213,213,1);
-	-moz-box-shadow: inset 0px 0px 0px 1px rgba(213,213,213,1);
-	box-shadow: inset 0px 0px 0px 1px rgba(213,213,213,1);*/
 }
+ul[list~="navigation"] ul[dropdown-col] li:hover{
+	box-shadow:none;
+	background:none;
+}
+
 [menu-dropdown]{
 	height: auto;
 	margin: 0;
