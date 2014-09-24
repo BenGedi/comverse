@@ -1255,6 +1255,9 @@ blockquote{
 	a[link="read-more"]{
 		font-size: small;
 	}
+	section[success-stories] div[stories]{
+		width: 746px;
+	}
 	div[stories]{
 		max-width: 747px;
 	}
