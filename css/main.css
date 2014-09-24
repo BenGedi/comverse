@@ -663,6 +663,22 @@ footer[last] div[social] h3{
 	display: inline-block;
 	vertical-align: top;
 }
+
+::-webkit-input-placeholder {
+   color: white;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: white;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: white;  
+}
+
+:-ms-input-placeholder {  
+   color: white;  
+}
 [box~="search"] input[type="search"]:focus{
 	border: none;
 }
@@ -1137,6 +1153,21 @@ blockquote{
 	[box~="search"] {
 		height: 26px;
 		width: 129px;
+	}
+	::-webkit-input-placeholder {
+	   color: lightgrey;
+	}
+
+	:-moz-placeholder { /* Firefox 18- */
+	   color: lightgrey;  
+	}
+
+	::-moz-placeholder {  /* Firefox 19+ */
+	   color: lightgrey;  
+	}
+
+	:-ms-input-placeholder {  
+	   color: lightgrey;  
 	}
 	[box~="search"] input[type="search"] {
 		width: 103px;
