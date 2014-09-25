@@ -25,10 +25,15 @@
 				<input type="search" placeholder="Search"><button type="submit"><i class="fa fa-search"></i></button>
 			</form>
 			<div company-logo>
-			<a href="http://bengedi.github.io/comverse/"><img src="img/comverse-logo.png" alt="Comverse"></a>
+			<a href="#"><img src="img/comverse-logo.png" alt="Comverse"></a>
 			</div>
 			<nav menu-nav>
-				<ul list="navigation row">
+				<label for="menu-toggle"><i class="fa fa-bars"></i></label>
+				<input type="checkbox" id="menu-toggle"/> 
+				<ul list="navigation row" id="menu">
+					<li>
+						<a link="navigation" href="#"><i class="fa fa-home"></i> HOME</a>
+					</li>
 					<li>
 					<a link="navigation" href="#">YOUR NEEDS</a>
 						<div menu-dropdown>
