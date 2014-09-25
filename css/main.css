@@ -17,11 +17,10 @@ section[carousel]{
 	position:relative;
 }
 section[carousel] div[container]{
-
 	margin-left: auto;
 	margin-right: auto;
 	position: relative;
-	top: 44.5%;
+	top: 42.5%;
 	z-index: 1;
 }	
 div[carousel-caption]{
@@ -51,7 +50,7 @@ ul[list~="carousel-inner"] li[item] ul[list="item-content"] li{
 	list-style-type: circle;
 	color: white;
 	list-style-position:inside;
-	line-height: 1.5em;
+	line-height: 1.5;
 }
 body{
 	font-family: "Segan-Light";
@@ -533,7 +532,7 @@ ol[list~="carouselIndicators"]{
 	height: 11px;
 	width: 100%;
 	padding: 0;
-	margin-bottom: 10.5%;
+	margin-bottom: 11%;
 	margin-top: 0;
 	display: inline-block;
 }
@@ -1230,11 +1229,11 @@ blockquote{
 		line-height: 1.3;
 	}
 	section[carousel] div[container]{
-		top: 49.5%;
+		top: 51.5%;
 	}
 	ol[list~="carouselIndicators"]{
 		margin-left: 14.5px;
-		margin-bottom: 8.5%;
+		margin-bottom: 53px;
 	}
 	ul[list~="solutions"]{
 		width: 768px;
