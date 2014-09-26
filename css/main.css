@@ -1429,7 +1429,7 @@ blockquote{
    ========================================================================== */
 
 @media screen and (max-width: 767px) {
-	nav[user-access-nav] ,#menu{
+	nav[user-access-nav]{
 		display: none;
 	}
 	header{
@@ -1461,8 +1461,17 @@ blockquote{
 	label[for="menu-toggle"]:hover{
 		border-color: grey;
 	}
+	 #menu,form#search{
+		max-height: 0;
+		overflow: hidden;
+		webkit-transition: max-height 0.4s ease-in-out;
+		-moz-transition: max-height 0.4s ease-in-out;
+		-o-transition: max-height 0.4s ease-in-out;
+		transition: max-height 0.4s ease-in-out;
+	}
 	#menu-toggle:checked + #menu, #search-toggle:checked + form#search{
-	  display: block;
+	  	display: block;
+		max-height: 209px;
 	}
 	nav[menu-nav] ul[list~="navigation"]{
 		width: 100%; 
@@ -1521,10 +1530,6 @@ blockquote{
 		margin: 0 auto;
 		display: block;
 		padding-top: 10px;
-		/*position: relative;
-		margin: 0 auto;
-		top: -30px;
-		left: 48%;*/
 	}
 	div[company-logo] img{
 		width: 108px;
@@ -1561,7 +1566,7 @@ blockquote{
 		margin-left: 1.403%;
 		border-radius: 6px;
 	}
-	[box~="search"] button[type="submit"], form#search{
+	[box~="search"] button[type="submit"]{ /*, form#search*/
 		display: none;
 	}
 	label[for="search-toggle"]{
