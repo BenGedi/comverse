@@ -430,12 +430,12 @@ ul[list~="navigation"] ul[dropdown-col] li:hover{
 .fa-bars{
 	color:#a0a0a0;
 }
-label[for="menu-toggle"] {  
+label[for="menu-toggle"], label[for="search-toggle"] {  
 	position: absolute;
   	cursor: pointer;
   	display: none;
 }
-#menu-toggle {
+#menu-toggle ,#search-toggle{
   display: none; /* hide the checkbox */
 }
 #menu {
@@ -1450,7 +1450,7 @@ blockquote{
 		position: absolute;
 		top: -36px;
 		left: 9px;
-		display: block;
+		display: inline-block;
 		padding: 6px 7px 9px 8px;
 		background: linear-gradient(to bottom, #f2f2f2 0%,#e5e5e5 100%);
 		width: 24px;
@@ -1461,7 +1461,7 @@ blockquote{
 	label[for="menu-toggle"]:hover{
 		border-color: grey;
 	}
-	#menu-toggle:checked + #menu {
+	#menu-toggle:checked + #menu, #search-toggle:checked + form#search{
 	  display: block;
 	}
 	nav[menu-nav] ul[list~="navigation"]{
@@ -1516,34 +1516,71 @@ blockquote{
 		font-size: 26px !important;
 	}
 	div[company-logo] {
-		display: inherit;
 		width: 108px;
-		height: 36px;
+		height: 40px;
 		margin: 0 auto;
+		display: block;
 		padding-top: 10px;
+		/*position: relative;
+		margin: 0 auto;
+		top: -30px;
+		left: 48%;*/
 	}
 	div[company-logo] img{
 		width: 108px;
 	}
+	::-webkit-input-placeholder {
+	   color: lightgrey;
+	}
+
+	:-moz-placeholder { /* Firefox 18- */
+	   color: lightgrey;  
+	}
+
+	::-moz-placeholder {  /* Firefox 19+ */
+	   color: lightgrey;  
+	}
+
+	:-ms-input-placeholder {  
+	   color: lightgrey;  
+	}
+	form[box="search"]{
+		position: absolute;
+		height: 48px;
+		top: 100%;
+		left:0;
+		width: 100%;
+		background: white;
+		z-index: 100;
+	}
 	[box~="search"] input[type="search"]{
+		height: 28px;
+		padding-left: 6px;
+		width: 97.194%;
+		margin-top: 9px;
+		margin-left: 1.403%;
+		border-radius: 6px;
+	}
+	[box~="search"] button[type="submit"], form#search{
 		display: none;
 	}
-	[box~="search"] button[type="submit"]{
-		height: 38px;
-		width: 38px;
-		position: relative;
-		top: -24px;
-		right: -88px;
+	label[for="search-toggle"]{
+		display: inline-block;
+		height: 37px;
+		width: 37px;
+		margin: 10px 10px 0 93%;
 		padding: 0;
 		border: 1px solid lightgrey;
 		border-radius: 5px;
 		color: #3097CB;
 		background: linear-gradient(to bottom, #f2f2f2 0%,#e5e5e5 100%);
 	}
-	[box~="search"] button[type="submit"]:hover{
+	
+	label[for="search-toggle"]:hover{
 		border-color: grey;
 	}
-	button[type="submit"] i.fa-search{
-		font-size: 23px;
+	label[for="search-toggle"] i.fa-search{
+		font-size: 27px;
+		padding: 4px 3px 4px 6px;
 	}
 }
