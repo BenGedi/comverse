@@ -1876,6 +1876,7 @@ blockquote{
 	}
 	ul[list~="bottomMenu"] li:last-child{
 		border-right: none;	
+		padding-left: 0;
 	}
 	ul[list~="bottomMenu"] li a{
 		color: black;
