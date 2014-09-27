@@ -1446,7 +1446,9 @@ blockquote{
 	header{
 		height: 60px;
 	}
-
+	h1[heading="section"]{
+		padding-bottom: 27px;
+	}
 	footer[last],header[id="comverse"],section[carousel],section[solutions],section[solution-for],
 	section[success-stories],section[events]{
 		max-width: 767px;
@@ -1675,9 +1677,12 @@ blockquote{
 	[feature-box] footer span{
 		margin-left: 10px;
 	}
+	section[solutions]{
+		height: 345px;
+	}
 	ul[list~="solutions"]{
 		height: 226px;
-		padding-top: 23px;
+		padding-top: 0;
 		padding-bottom: 20px;
 	}
 	section[solutions] a[link~="btnBlue"]{
@@ -1687,10 +1692,25 @@ blockquote{
 		width: 33%;
 		height: 129px;
 	}
-	/*[box~="solution"] figure img{
-
-	}*/
 	[box~="solution"] figure figcaption{
 		font: 0.9em/15px Arial;
+	}
+	section[solution-for]{
+		height: 136px;
+	}
+	section[solution-for] [list~="row"] li{
+		float: none;
+	}
+	ul[list~="solution-for"]{
+		padding-top: 0;
+		max-width: 384px;
+		text-align: center;
+	}
+	ul[list~="solution-for"] li{
+		margin-right: 20px;
+		display: inline;
+	}
+	ul[list~="solution-for"] li a{
+		font: 23px/24px 'Segan-Light';
 	}
 }
