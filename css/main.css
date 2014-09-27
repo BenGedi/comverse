@@ -4,12 +4,33 @@
   font-weight: normal;
   src: url("../fonts/Segan-Light.ttf") format("truetype");
 }
-header [container],section[carousel] div[container],ul[list~="solution-for"],
-section[success-stories] div[stories],ul[list~="carousel-inner"] [item] div,ul[list~="events"]{
+body{
+	font-family: "Segan-Light";
+	position: relative;
+	margin: 0;
+	/*overflow-x: hidden;*/
+}
+[clearfix]:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}
+ 
+[clearfix] {
+    display: inline-block;
+}
+
+footer[last] div[footer-wrapper], div[container],ul[list~="solution-for"],div[stories],ul[list~="carousel-inner"] [item] div,ul[list~="carousel-inner"] [item] div{
 	max-width: 940px;
 }
 section{
 	max-width:100%;
+}
+section[solutions],section[solution-for],section[events],section[success-stories]{
+	padding-top: 55px;
 }
 section[carousel]{
 	height: 549px;
@@ -30,7 +51,7 @@ div[carousel-caption]{
 }
 ul[list~="carousel-inner"]{
 	width: 100%;
-	height: 549px;
+	height: inherit;
 	position: absolute;
 	margin: 0;
 	top: 0;
@@ -52,25 +73,7 @@ ul[list~="carousel-inner"] li[item] ul[list="item-content"] li{
 	list-style-position:inside;
 	line-height: 1.5;
 }
-body{
-	font-family: "Segan-Light";
-	position: relative;
-	margin: 0;
-	/*overflow: hidden;*/
-}
 
-[clearfix]:after {
-    content: ".";
-    display: block;
-    clear: both;
-    visibility: hidden;
-    line-height: 0;
-    height: 0;
-}
- 
-[clearfix] {
-    display: inline-block;
-}
 
 header{
 	height: 90px;
@@ -83,7 +86,7 @@ header [container]{
 }
 form[box="search"]{
 	position: absolute;
-	left: 81.7%%;
+	left: 81.1%%;
 	top: 60.5%;
 }
 div[company-logo]{
@@ -98,11 +101,9 @@ div[company-logo] a{
 }
 section[solutions]{
 	height: 365px;
-	padding-top: 55px;
 	background: url("../img/weDoBG.png") repeat scroll 0 0, radial-gradient(ellipse at center, #59bedb 0%,#3399cc 100%);
 }
 ul[list~="solutions"]{
-	max-width: 940px;
 	height: 107px;
 	margin: 0 auto;
 	padding-top: 64px;
@@ -121,13 +122,12 @@ section[solutions] a[link~="btnBlue"]{
 section[solution-for] {
 	height: 173px;
 	background-color: #646263;
-	padding: 55px 0 0;
 	-webkit-box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 0.5) inset;
 	box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 0.5) inset;
 }
 ul[list~="solution-for"]{
 	height: 51px;
-	width: 812px;
+	max-width: 812px;
 	padding-left: 0;
 	padding-top:45px;
 	margin:0 auto;
@@ -146,7 +146,6 @@ section[events]{
 	background: url("../img/pic02.jpg") no-repeat 50% 0 fixed #1e1c1b;
 	background-size: auto 100%;
 	height: 399px;
-	padding: 55px 0 0;
 }
 i.fa-play{
 	font-size: 13px;
@@ -159,7 +158,7 @@ section[solutions] i.fa-play{
 	margin-top: 1%;
 }
 [item="2"]{
-	background: url("../img/carousel/hp_ferriswheel_2500x639.jpg") no-repeat 50% 0 fixed #1e1c1b;
+	background: url("../img/carousel/hp_ferriswheel_2500x639.jpg") no-repeat 50% 0 fixed white; /*#1e1c1b*/
 }
 section[success-stories]{
 	height: 512px;
@@ -167,7 +166,6 @@ section[success-stories]{
 	margin: 0 auto;
 	-webkit-box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 0.5) inset;
 	box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 0.5) inset;
-	padding: 68px 0 0;
 }
 section[success-stories] h1{
 	color: #565656;
@@ -450,7 +448,7 @@ label[for="menu-toggle"], label[for="search-toggle"] {
 	-moz-background-clip: padding;
 	background-clip: padding-box;
 	background: #fcfcfc;
-	width: 961px;
+	width: 940px;
 	border-left: 1px solid #D5D5D5;
 	border-right: 1px solid #D5D5D5;
 	border-bottom: 1px solid #D5D5D5;
@@ -568,6 +566,7 @@ ol[list~="carouselIndicators"] li{
 }
 ol[list~="carouselIndicators"] li[active]{
 	background: #2e95ca;
+	color: white;
 }
 div[to-top]{
 	position: absolute;
@@ -598,7 +597,7 @@ footer[last]{
 	background: #2D2D2D repeat scroll 0 0;
 }
 footer[last] div[footer-wrapper]{
-	width: 942px;
+	max-width: 940px;
 	margin: 0 auto;
 }
 div[footer-wrapper] div[core]{
@@ -650,7 +649,7 @@ footer[last] div[social]{
 	background-color: rgba(132, 132, 132, 0.3);
 	border-right: 1px solid #212020;
 	border-left: 1px solid #212020;
-	padding: 27px 18px 0;
+	padding: 27px 17px 0;
 }
 footer[last] div[social] h3{
 	color: #4EA7D3;
@@ -715,7 +714,6 @@ footer[last] div[social] h3{
 ul[list~="feature-boxs"]{
 	list-style: none;
 	display: block;
-	width: 938px;
 	height: 170px;
 	margin:0 auto;
 	padding-left:0; 
@@ -730,10 +728,20 @@ li[feature-box]{
 	display: inline-block;
 	border-radius: 6px;
 	margin-left:34px; 
-	-webkit-box-shadow: 1px 1px 3px 0px rgba(50, 50, 50, 0.75);
-	-moz-box-shadow: 1px 1px 3px 0px rgba(50, 50, 50, 0.75);
-	box-shadow: 1px 1px 3px 0px rgba(50, 50, 50, 0.75);
+	-webkit-box-shadow: 5px 5px 5px 0px rgba(50, 50, 50, 0.75);
+	-moz-box-shadow: 5px 5px 5px 0px rgba(50, 50, 50, 0.75);
+	box-shadow: 5px 5px 5px 0px rgba(50, 50, 50, 0.75);
 }
+[feature-box] footer::after{
+		content: '';
+		background: url(../img/promotion-item-arrow.png) no-repeat scroll 0 0;
+		width: 11px;
+		height: 17px;
+		position: absolute;
+		display: none;
+		top: -59px;
+		right: 10px;	
+	}
 li[feature-box]:first-child{
 	margin-left:0;
 }
@@ -753,7 +761,6 @@ ul[list~="feature-boxs"] li:first-child{
 [feature-box] [heading="box"]{
 	height: 83%;
 	font-size: 24px;
-	margin-top: 5px
 	display: block;
 	-webkit-margin-before: 0px;
 	-webkit-margin-after: 0px;
@@ -1146,10 +1153,12 @@ blockquote{
    ========================================================================== */
 
 @media screen and (min-width: 768px) and (max-width: 1004px) {
+	body{
+		max-width: 1004px;
+	}
 	header [container],section[carousel] div[container],ul[list~="solution-for"],
 	section[success-stories] div[stories],ul[list~="carousel-inner"] [item] div,ul[list~="events"]{
 		max-width: 768px;
-		border: 1px soild black;
 	}
 	div[company-logo]{
 		margin-top: 5%;
@@ -1435,9 +1444,16 @@ blockquote{
 	header{
 		height: 60px;
 	}
-	header [container],section[carousel] div[container],ul[list~="solution-for"],
-	section[success-stories] div[stories],ul[list~="carousel-inner"] [item] div,ul[list~="events"]{
+
+	footer[last],header[id="comverse"],section[carousel],section[solutions],section[solution-for],
+	section[success-stories],section[events]{
 		max-width: 767px;
+	}
+	footer[last] div[footer-wrapper], div[container],ul[list~="solution-for"],div[stories],ul[list~="carousel-inner"] [item] div,ul[list~="carousel-inner"] [item] div{
+		max-width: 767px;
+	}
+	section[solutions],section[solution-for],section[events],section[success-stories]{
+		padding-top: 0;
 	}
 	nav[menu-nav]{
 		width: 100%;
@@ -1587,5 +1603,77 @@ blockquote{
 	label[for="search-toggle"] i.fa-search{
 		font-size: 27px;
 		padding: 4px 3px 4px 6px;
+	}
+	h1[heading="section"], h2[heading="carousel"]{
+		font: 1.5em "Segan-Light";
+		padding-top: 20px;
+	}
+	h2[heading="carousel"]{
+		font-weight: bolder;		
+	}
+	[item] [link~="btnBlue"]{
+		margin-top: 0;
+		position: relative;
+		top: 38px;
+		height: 28px;
+		width: 115px;
+	}
+	a[link~="btnBlue"] span{
+		font: 12px/28px Arial;
+		height: 28px;
+	}
+	i.fa-play{
+		font-size: 8px;
+		vertical-align: 1px;
+	}
+	ul[list~="carousel-inner"] [item] div{
+		-webkit-box-shadow: inset 0px 10px 10px -10px rgba(0, 0, 0, 0.2);
+		box-shadow: inset 0px 10px 10px -10px rgba(0, 0, 0, 0.2);
+		background: url("../img/weDoBG.png") repeat scroll 0 0 #3399cc;
+		padding: 0 0 0 10px;
+		min-height: 150px;
+	}
+	ol[list~="carouselIndicators"] li{
+		background: #e5e5e5;
+		color: #565656;
+		line-height: 30px;
+		margin-left: 7px;
+		width: 30px;
+		height: 30px;
+		text-indent: 0;
+	}
+	ol[list~="carouselIndicators"]{
+		height: auto;
+		margin-bottom: 20px;
+	}
+	section[carousel]{
+		height: 931px;
+	}
+	section[carousel] div[container]{
+		top: 295px;
+	}
+	li[feature-box]{
+		padding: 0;
+		height: 175px;
+		width: 100%;
+		margin-left: 0;
+		margin-bottom: 10px;
+	}
+	[feature-box] [heading="box"]{
+		height: 62%;
+		padding: 20px 10px 10px;
+	}
+	[feature-box] footer{
+		padding-left: 10px;
+	}
+	[feature-box] footer::after{
+		display: block;	
+	}
+	
+	[feature-box] footer span{
+		margin-left: 10px;
+	}
+	section[solutions] a[link~="btnBlue"]{
+		display: none;
 	}
 }
