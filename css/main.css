@@ -26,6 +26,7 @@ body{
 footer[last] div[footer-wrapper], div[container],ul[list~="solution-for"],div[stories],ul[list~="carousel-inner"] [item] div,
 ul[list~="carousel-inner"] [item] div,ul[list~="solutions"]{
 	max-width: 940px;
+	margin: 0 auto;
 }
 section{
 	max-width:100%;
@@ -811,6 +812,7 @@ ul[list~="feature-boxs"] li:first-child{
 }
 ul[list~="events"]{
 	height: 210px;
+	max-width: 940px;
 	padding-left: 0;
 	margin: 0 auto;
 }
