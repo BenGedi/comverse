@@ -1732,7 +1732,7 @@ blockquote{
 		font: 23px/24px 'Segan-Light';
 	}
 	section[events]{
-		height: 555px;
+		height: 577px;
 	}
 	section[events] h1{
 		padding-bottom: 13px;
@@ -1770,6 +1770,9 @@ blockquote{
 	}
 	[event-info]{
 		margin-top: 8px;
+	}
+	a[link="read-more"] {
+		font-size: small;
 	}
 	[list~="quote"]{
 		display: none;
