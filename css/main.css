@@ -23,7 +23,8 @@ body{
     display: inline-block;
 }
 
-footer[last] div[footer-wrapper], div[container],ul[list~="solution-for"],div[stories],ul[list~="carousel-inner"] [item] div,ul[list~="carousel-inner"] [item] div{
+footer[last] div[footer-wrapper], div[container],ul[list~="solution-for"],div[stories],ul[list~="carousel-inner"] [item] div,
+ul[list~="carousel-inner"] [item] div,ul[list~="solutions"]{
 	max-width: 940px;
 }
 section{
@@ -972,6 +973,7 @@ li[box~="solution"]+a[link="box"]{
     margin-right: auto;
 	vertical-align: bottom;
 	max-height: 100%;
+	max-width: 100%;
 }
 
 [list~="success-story"]{
@@ -1673,7 +1675,22 @@ blockquote{
 	[feature-box] footer span{
 		margin-left: 10px;
 	}
+	ul[list~="solutions"]{
+		height: 226px;
+		padding-top: 23px;
+		padding-bottom: 20px;
+	}
 	section[solutions] a[link~="btnBlue"]{
 		display: none;
+	}
+	[box~="solution"]{
+		width: 33%;
+		height: 129px;
+	}
+	/*[box~="solution"] figure img{
+
+	}*/
+	[box~="solution"] figure figcaption{
+		font: 0.9em/15px Arial;
 	}
 }
