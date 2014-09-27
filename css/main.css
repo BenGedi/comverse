@@ -1750,7 +1750,7 @@ blockquote{
 	a[event-box]{
 		padding: 0;
 		width: inherit;
-		height: 84px;
+		height: auto;
 	}
 	[event-date]{
 		width: 62px;
