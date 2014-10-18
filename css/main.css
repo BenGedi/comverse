@@ -22,7 +22,18 @@ body{
 [clearfix] {
     display: inline-block;
 }
-
+.breadcrumb{
+	padding-top: 10px;
+}
+.breadcrumb div{
+	display: inline;
+}
+.breadcrumb span{
+	font-size: 14px;
+}
+a[link~="blue"]:link{
+	color: #3399CC;
+}
 footer[last] div[footer-wrapper], div[container],ul[list~="solution-for"],div[stories],ul[list~="carousel-inner"] [item] div,
 ul[list~="carousel-inner"] [item] div,ul[list~="solutions"]{
 	max-width: 940px;
@@ -263,7 +274,7 @@ ul[list~="social"] [twitter]:hover{
 } 
 /*------= Headings =-------*/
 
-h1[heading="section"],h2[heading="footer-list"]{
+[heading]{
 	text-transform: uppercase;
 }
 
@@ -401,7 +412,7 @@ nav[menu-nav] [list~="navigation"] {
 }
 nav[menu-nav] [list~="navigation"] li{
 	width: inherit;
-	height: 41px;
+	height: 38px;
 	padding: 0;
 	margin: 0;
 	z-index: 2;
@@ -413,7 +424,7 @@ ul[list~="navigation"] li{
 }
 nav[menu-nav] a {
 	padding: 10px 10px 0;
-	height: 41px;
+	height: 19px;
 	display: block;
 }
 nav[menu-nav] [list~="navigation"] li:first-child{
@@ -1156,7 +1167,43 @@ blockquote{
 	overflow: hidden;
 	background: #3AA6DB;
 }
-
+section[contact-us]{
+	min-height: 550px;
+	box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.1), inset 0px 10px 10px -10px rgba(0, 0, 0, 0.2);
+	background: url("../img/bodyBG.png") repeat scroll 0 0 #fff;
+}
+section[contact-us] aside{
+	width: 14.5%;
+	display: inline-block;
+}
+section[contact-us] aside ul{
+	padding-left: 0;
+	list-style: none;
+}
+section[contact-us] aside ul li{
+	padding: 10px 0px;
+	border-bottom: 1px solid rgb(219, 205, 205);
+	color: #7d7d7d;
+	line-height: 21px;
+	font-family: arial;
+	font-size: 13px;
+	box-shadow: 0px 2px 0px #fff;
+	text-transform: uppercase;
+}
+section[contact-us] div[main-contact]{
+	display: inline-block;
+	margin-left: 7%;
+	vertical-align: top;
+}
+section[contact-us] .breadcrumb{
+	padding-bottom: 44px;
+}
+section[contact-us] h1{
+	font-size: 43px;
+	margin-top: 10px;
+	font-weight: normal;
+	margin-bottom: -5px;
+}
 /* ==========================================================================
    #medium breakpoint 768px - 1004px
    ========================================================================== */
