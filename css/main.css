@@ -36,7 +36,7 @@ a[link~="blue"]:link{
 }
 footer[last] div[footer-wrapper], div[container],ul[list~="solution-for"],div[stories],ul[list~="carousel-inner"] [item] div,
 ul[list~="carousel-inner"] [item] div,ul[list~="solutions"]{
-	max-width: 940px;
+	max-width: 960px;
 	margin: 0 auto;
 }
 section{
@@ -1168,19 +1168,24 @@ blockquote{
 	background: #3AA6DB;
 }
 section[contact-us]{
-	min-height: 550px;
+	height: auto;
 	box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.1), inset 0px 10px 10px -10px rgba(0, 0, 0, 0.2);
 	background: url("../img/bodyBG.png") repeat scroll 0 0 #fff;
+	padding-bottom: 40px;
 }
-section[contact-us] aside{
+aside[contact-sidebar]{
 	width: 14.5%;
 	display: inline-block;
 }
-section[contact-us] aside ul{
+aside[contact-sidebar] ul{
 	padding-left: 0;
 	list-style: none;
+	margin-top: 0;
 }
-section[contact-us] aside ul li{
+aside[contact-sidebar] ul li:first-child{
+	padding-top: 0;
+}
+aside[contact-sidebar] ul li{
 	padding: 10px 0px;
 	border-bottom: 1px solid rgb(219, 205, 205);
 	color: #7d7d7d;
@@ -1203,18 +1208,73 @@ section[contact-us] h1,section[contact-us] h2{
 }
 section[contact-us] h1{
 	font-size: 43px;
-	margin-top: 10px;
-	margin-bottom: -5px;
+	margin-top: 0;
+	margin-bottom: 5px;
 }
-section[contact-us] h2{
-	color: #3399CC;
+section[contact-us] form{
+	max-width: 400px;
 }
 section[contact-us] p:nth-child(3){
 	margin: 29px 0;
 	font-size: small;
 }
+form[name="frmContact"] legend{
+	color: #3399CC;
+	font-size: x-large;
+	padding-left: 0;
+	margin-bottom: 5px;
+}
+form[name="frmContact"] fieldset{
+	border: none;
+	padding: 0;
+}
+form[name="frmContact"] label:first-child{
+	margin-top:0;
+}
+form[name="frmContact"] label{
+	margin-top: 15px;
+	display:block;
+}
+form[name="frmContact"] label span{
+	font-size: smaller;
+}
+form[name="frmContact"] textarea{
+	max-width: 400px;
+} 
 aside[contact-sidebar] a{
 	display: block;
+}
+input[name="fullName"]:focus, input[name="email"]:focus, input[name="companyName"]:focus, input[name="phoneNum"]:focus, textarea:focus{
+	border-color: #3399CC;
+}
+input[name="fullName"], input[name="email"], input[name="companyName"], input[name="phoneNum"], textarea {
+	width: 290px;
+	border: 1px solid #d3d3d3;
+	background: #fff;
+	color: #000;
+	font-size: .9em;
+	border-radius: 3px;
+	outline: 0;
+	padding: 4px;
+}
+.errorMessage{
+	display: none;
+	font: 75% sans-serif;
+	color: red;
+}
+button[btnSubmit]{
+	width: 60px;
+	line-height: 14px;
+	height: 35px;
+	color: white;
+	border-radius: 4px;
+	display: block;	
+	background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #3299cc), color-stop(1, #1486c1) );
+	border: none;
+	box-shadow: inset 0px 1px 0px 0px #bbdaf7;
+}
+button[btnSubmit]:hover{
+	background: linear-gradient(to bottom, #40a2d5 0%, #289ad2 100%);
 }
 /* ==========================================================================
    #medium breakpoint 768px - 1004px

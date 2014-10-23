@@ -6,8 +6,9 @@
 	<link rel="stylesheet" href="css/main.css">
 	<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 	<link rel="icon" type="image/png" href="img/logo_comverse_icon.ico">
+	<script src="js/contact-us.js"></script>
 </head>
-<body>
+<body onload="setfocus()">
 	<header id="comverse">
 		<div container>
 			<nav user-access-nav>
@@ -154,26 +155,43 @@
 				<aside contact-sidebar>
 					<ul>
 						<li><a href="#">overview</a></li>
-						<li><a href="#">management</a></li>
+						<li><a href="#">timeline</a></li>
+						<li><a href="#">values</a></li>
+						<li><a href="#">managment</a></li>
 						<li><a href="#">investors</a></li>
-						<li><a href="#">partners</a></li>
 						<li><a href="#">customers</a></li>
-						<li><a href="#">values & corporate responsibility</a></li>
-						<li><a href="#">industry involvement</a></li>
+						<li><a href="#">partners</a></li>
 						<li><a href="#">careers</a></li>
+						<li><a href="#">contact us</a></li>
 					</ul>
 				</aside>
 				<div main-contact>
 					<h1 heading>Contact Us</h1>
 					<p heading>Share your thoughts, ideas about future projects or just say hi</p>
-					<p heading><a link="blue" href="#">comverse worldwide offices »</a></p>
-					<h2 heading>how can we help?</h2>
+					<p heading><a link="blue" href="
+					#">comverse worldwide offices »</a></p>
+					<form action="#" id="contact-form" name="frmContact" novalidate>
+						<fieldset>
+							<legend heading>Get in touch</legend>
+							<label for="fullName" >Full Name:</label>
+							<input type="text" id="fullName" name="fullName" tabindex="1" aria-required="”true”" required>
+							<span class="errorMessage" aria-describedby="fullName">Please fill out this field.</span>
+							<label for="email" >Email:</label>
+							<input type="email" id="email" name="email" tabindex="2" aria-required="”true”" required>
+							<span class="errorMessage" aria-describedby="email">Please fill out this field.</span>
+							<label for="companyName" >Company:</label>
+							<input type="text" id="companyName" name="companyName" tabindex="3" aria-required="”true”" required>
+							<span class="errorMessage" aria-describedby="companyName">Please fill out this field.</span>
+							<label for="phoneNum" >Phone: <span>(Optional)</span></label>
+							<input type="tel" id="phoneNum" name="phoneNum" tabindex="4">
+							<label for="frmMessage" >How can we help?</label>
+							<textarea name="frmMessage" id="frmMessage" cols="30" rows="10" tabindex="5" aria-required="”true”" required></textarea>
+							<span class="errorMessage" aria-describedby="frmMessage">Please fill out this field.</span>
+							<button btnSubmit type="submit" tabindex="6">SEND</button>
+						</fieldset>
+					</form>
 				</div>
 			</div>
-		</section>
-		<section direct-contact>
-			
-
 		</section>
 		<section our-locations>
 			
