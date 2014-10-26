@@ -168,25 +168,25 @@
 				<div main-contact>
 					<h1 heading>Contact Us</h1>
 					<p heading>Share your thoughts, ideas about future projects or just say hi</p>
-					<p heading><a link="blue" href="
-					#">comverse worldwide offices »</a></p>
-					<form action="#" id="contact-form" name="frmContact" novalidate>
+					<p heading><a link="blue" href="#">comverse worldwide offices »</a></p>
+					<p id="frmValidMsg" class="hidden">Thank you, message is recived</p>
+					<form action="#" id="contact-form" name="frmContact" onsubmit="return validateForm();" novalidate>
 						<fieldset>
 							<legend heading>Get in touch</legend>
 							<label for="fullName" >Full Name:</label>
 							<input type="text" id="fullName" name="fullName" tabindex="1" aria-required="”true”" required>
-							<span class="errorMessage" aria-describedby="fullName">Please fill out this field.</span>
+							<span class="errorMessage hidden" id="errorName" aria-describedby="fullName" aria-hidden="true">Please fill out this field.</span>
 							<label for="email" >Email:</label>
 							<input type="email" id="email" name="email" tabindex="2" aria-required="”true”" required>
-							<span class="errorMessage" aria-describedby="email">Please fill out this field.</span>
+							<span class="errorMessage hidden" id="emailError" aria-describedby="email" aria-hidden="true">Please fill out this field.</span>
 							<label for="companyName" >Company:</label>
 							<input type="text" id="companyName" name="companyName" tabindex="3" aria-required="”true”" required>
-							<span class="errorMessage" aria-describedby="companyName">Please fill out this field.</span>
+							<span class="errorMessage hidden" id="errorCompany" aria-describedby="companyName" aria-hidden="true">Please fill out this field.</span>
 							<label for="phoneNum" >Phone: <span>(Optional)</span></label>
 							<input type="tel" id="phoneNum" name="phoneNum" tabindex="4">
 							<label for="frmMessage" >How can we help?</label>
-							<textarea name="frmMessage" id="frmMessage" cols="30" rows="10" tabindex="5" aria-required="”true”" required></textarea>
-							<span class="errorMessage" aria-describedby="frmMessage">Please fill out this field.</span>
+							<textarea name="message" id="message" cols="30" rows="10" tabindex="5" aria-required="”true”" required></textarea>
+							<span class="errorMessage hidden" id="errorMsg" aria-describedby="frmMessage" aria-hidden="true">Please fill out this field.</span>
 							<button btnSubmit type="submit" tabindex="6">SEND</button>
 						</fieldset>
 					</form>
@@ -278,5 +278,95 @@
 				</div>
 			</div>
 		</footer>
+		<script>
+			var valid = true,emailValid =true;
+			var emailValidation = function(data){
+				var emailInput = document.getElementById('email'), 
+					errorMsg = document.getElementById('emailError'),
+					hasClass = errorMsg.classList.contains('hidden'),
+					atpos = data.currentTarget.value.indexOf("@"),
+			    	dotpos = data.currentTarget.value.lastIndexOf(".");
+				if(data.currentTarget.value == "" && data.keyCode === 8 || data.keyCode === 46){
+					errorMsg.innerText = "Please fill out this field";
+					errorMsg.classList.remove('hidden');
+					emailInput.style.borderColor = "red";
+					emailValid = false;
+				}
+				else if(atpos<1 || dotpos<atpos+2 || dotpos+2>=data.currentTarget.value.length){ 
+					errorMsg.innerText = "Please enter a valid email\n\"Example: NAME@DOMAIN.TLD\"";
+					errorMsg.classList.remove('hidden');
+					emailInput.style.borderColor = "red";
+					emailValid = false;
+				}
+				else{
+					errorMsg.classList.add('hidden');
+					emailInput.style.borderColor = "#d3d3d3";
+					emailValid = true;
+				}
+				return emailValid;
+			};
+			document.querySelector("#email").addEventListener("keyup", emailValidation);
+			var validateForm = function(){
+			var frmName = document.getElementById("fullName"),
+							frmEmail = document.getElementById("email"),
+							frmCompany = document.getElementById("companyName"),
+							frmMsg = document.getElementById("message"),
+							errName = document.getElementById("errorName"),
+							errEmail = document.getElementById("emailError"),
+							errCompany = document.getElementById("errorCompany"),
+							errMsg = document.getElementById("errorMsg");
+			if(frmName.value===""){
+				errName.classList.remove('hidden');
+				frmName.style.borderColor = "red";
+				valid = false;
+			}
+			else{
+				errName.classList.add('hidden');
+				frmName.style.borderColor = "#d3d3d3";
+				valid = true;
+			}
+			if(frmEmail.value ==="" || emailValid==false){
+				errEmail.classList.remove('hidden');
+				frmEmail.style.borderColor = "red";
+				valid = false;
+			}
+			else{
+				errEmail.classList.add('hidden');
+				frmEmail.style.borderColor = "#d3d3d3";
+				valid = true;
+			}
+			if(frmCompany.value===""){
+				errCompany.classList.remove('hidden');
+				frmCompany.style.borderColor = "red";
+				valid = false;
+			}
+			else{
+				errCompany.classList.add('hidden');
+				frmCompany.style.borderColor = "#d3d3d3";
+				valid = true;
+			}
+			if(frmMsg.value===""){
+				errMsg.classList.remove('hidden');
+				frmMsg.style.borderColor = "red";
+				valid = false;
+			}
+			else{
+				errMsg.classList.add('hidden');
+				frmMsg.style.borderColor = "#d3d3d3";
+				valid = true;
+			}
+			if((emailValid && valid)===true){
+				 (IsetTimeout(function(){
+				 		document.getElementById('frmValidMsg').classList.remove('hidden');
+					    //your code to be executed after 1 seconds
+					    },3000))();
+			}	
+
+			return emailValid && valid;
+		};
+			var setfocus = function() {
+				document.frmContact.fullName.focus();
+			}
+		</script>
 	</body>
 </html>

@@ -1258,9 +1258,13 @@ input[name="fullName"], input[name="email"], input[name="companyName"], input[na
 	padding: 4px;
 }
 .errorMessage{
-	display: none;
+	display: block;
 	font: 75% sans-serif;
 	color: red;
+}
+.hidden{
+	display: none;
+	visibility: hidden;
 }
 button[btnSubmit]{
 	width: 60px;
