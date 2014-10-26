@@ -356,10 +356,7 @@
 				valid = true;
 			}
 			if((emailValid && valid)===true){
-				 (IsetTimeout(function(){
-				 		document.getElementById('frmValidMsg').classList.remove('hidden');
-					    //your code to be executed after 1 seconds
-					    },3000))();
+				 document.getElementById('frmValidMsg').classList.remove('hidden');
 			}	
 
 			return emailValid && valid;
