@@ -175,18 +175,18 @@
 							<legend heading>Get in touch</legend>
 							<label for="fullName" >Full Name:</label>
 							<input type="text" id="fullName" name="fullName" tabindex="1" aria-required="”true”" required>
-							<span class="errorMessage hidden" id="errorName" aria-describedby="fullName" aria-hidden="true">Please fill out this field.</span>
+							<span class="errorMessage hidden" id="fullNameError" aria-describedby="fullName" aria-hidden="true">Please fill out this field.</span>
 							<label for="email" >Email:</label>
 							<input type="email" id="email" name="email" tabindex="2" aria-required="”true”" required>
 							<span class="errorMessage hidden" id="emailError" aria-describedby="email" aria-hidden="true">Please fill out this field.</span>
 							<label for="companyName" >Company:</label>
 							<input type="text" id="companyName" name="companyName" tabindex="3" aria-required="”true”" required>
-							<span class="errorMessage hidden" id="errorCompany" aria-describedby="companyName" aria-hidden="true">Please fill out this field.</span>
+							<span class="errorMessage hidden" id="companyNameError" aria-describedby="companyName" aria-hidden="true">Please fill out this field.</span>
 							<label for="phoneNum" >Phone: <span>(Optional)</span></label>
 							<input type="tel" id="phoneNum" name="phoneNum" tabindex="4">
 							<label for="frmMessage" >How can we help?</label>
 							<textarea name="message" id="message" cols="30" rows="10" tabindex="5" aria-required="”true”" required></textarea>
-							<span class="errorMessage hidden" id="errorMsg" aria-describedby="frmMessage" aria-hidden="true">Please fill out this field.</span>
+							<span class="errorMessage hidden" id="messageError" aria-describedby="frmMessage" aria-hidden="true">Please fill out this field.</span>
 							<button btnSubmit type="submit" tabindex="6">SEND</button>
 						</fieldset>
 					</form>
@@ -282,39 +282,71 @@
 			var valid = true,emailValid =true;
 			var emailValidation = function(data){
 				var emailInput = document.getElementById('email'), 
-					errorMsg = document.getElementById('emailError'),
-					hasClass = errorMsg.classList.contains('hidden'),
+					messageError = document.getElementById('emailError'),
+					hasClass = messageError.classList.contains('hidden'),
 					atpos = data.currentTarget.value.indexOf("@"),
 			    	dotpos = data.currentTarget.value.lastIndexOf(".");
 				if(data.currentTarget.value == "" && data.keyCode === 8 || data.keyCode === 46){
-					errorMsg.innerText = "Please fill out this field";
-					errorMsg.classList.remove('hidden');
+					messageError.innerText = "Please fill out this field";
+					messageError.classList.remove('hidden');
 					emailInput.style.borderColor = "red";
 					emailValid = false;
 				}
 				else if(atpos<1 || dotpos<atpos+2 || dotpos+2>=data.currentTarget.value.length){ 
-					errorMsg.innerText = "Please enter a valid email\n\"Example: NAME@DOMAIN.TLD\"";
-					errorMsg.classList.remove('hidden');
+					messageError.innerText = "Please enter a valid email\n\"Example: NAME@DOMAIN.TLD\"";
+					messageError.classList.remove('hidden');
 					emailInput.style.borderColor = "red";
 					emailValid = false;
 				}
 				else{
-					errorMsg.classList.add('hidden');
+					messageError.classList.add('hidden');
 					emailInput.style.borderColor = "#d3d3d3";
 					emailValid = true;
 				}
 				return emailValid;
 			};
+			var isEmpty = function (data){
+				var err = document.getElementById(data.target.id+"Error");
+				if(data.currentTarget.value !== "" && data.target.style.borderColor ==="red"){
+					err.classList.add('hidden');
+					data.target.style.borderColor ="#d3d3d3";
+				}
+			};
+			// Get some contact us form, which contains anchor tags
+			var frm = document.getElementById('contact-form');
+			frm.addEventListener("focus",function(e) {
+			  // Firefox and IE access the target element different. e.target, and event.srcElement, respectively.
+			  var target = e ? e.target : window.event.srcElement;
+			  if ( target.id!=="email" && (target.nodeName.toLowerCase() === 'input' || target.nodeName.toLowerCase() === 'textarea') && target.style.borderColor === "red") {
+			  	target.addEventListener("keyup",function(){
+				    var err = document.getElementById(target.id+"Error");
+					if(target.value !== ""){
+						err.classList.add('hidden');
+						target.style.borderColor ="#3399CC";
+					}
+				    return false;
+			  	});
+			  }
+			},true);
+			 
+			function blur(event) {
+			    if (event.target.id!=="email" && (event.target.nodeName == 'INPUT' || event.target.nodeName == 'TEXTAREA')) {
+			        console.log(event.target.id);
+			        event.target.style.borderColor ="#d3d3d3";
+			    }
+			}
+			document.addEventListener('blur', blur, true);
 			document.querySelector("#email").addEventListener("keyup", emailValidation);
+			// document.querySelector('input[type="text"]').addEventListener("keyup", isEmpty);
 			var validateForm = function(){
 			var frmName = document.getElementById("fullName"),
 							frmEmail = document.getElementById("email"),
 							frmCompany = document.getElementById("companyName"),
 							frmMsg = document.getElementById("message"),
-							errName = document.getElementById("errorName"),
+							errName = document.getElementById("fullNameError"),
 							errEmail = document.getElementById("emailError"),
-							errCompany = document.getElementById("errorCompany"),
-							errMsg = document.getElementById("errorMsg");
+							errCompany = document.getElementById("companyNameError"),
+							errMsg = document.getElementById("messageError");
 			if(frmName.value===""){
 				errName.classList.remove('hidden');
 				frmName.style.borderColor = "red";
