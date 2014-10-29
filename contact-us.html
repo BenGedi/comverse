@@ -279,57 +279,6 @@
 			</div>
 		</footer>
 		<script>
-			var emailValid =true;
-			var emailValidation = function(data){
-				var emailInput = document.getElementById('email'), 
-					messageError = document.getElementById('emailError'),
-					hasClass = messageError.classList.contains('hidden'),
-					atpos = data.currentTarget.value.indexOf("@"),
-			    	dotpos = data.currentTarget.value.lastIndexOf(".");
-				if(data.currentTarget.value == "" && data.keyCode === 8 || data.keyCode === 46){
-					messageError.innerText = "Please fill out this field";
-					messageError.classList.remove('hidden');
-					emailInput.className = "redBorder";
-					emailValid = false;
-				}
-				else if(atpos<1 || dotpos<atpos+2 || dotpos+2>=data.currentTarget.value.length){ 
-					messageError.innerText = "Please enter a valid email\n\"Example: NAME@DOMAIN.TLD\"";
-					messageError.classList.remove('hidden');
-					emailInput.className = "redBorder";
-					emailValid = false;
-				}
-				else{
-					messageError.classList.add('hidden');
-					emailInput.className = "";
-					emailValid = true;
-				}
-				return emailValid;
-			};
-			// Get some contact us form, which contains anchor tags
-			var frm = document.getElementById('contact-form');
-			frm.addEventListener("focus",function(e) {
-			  // Firefox and IE access the target element different. e.target, and event.srcElement, respectively.
-			  var target = e ? e.target : window.event.srcElement;
-			  target.focus();
-			  return false;
-			},true);
-			frm.addEventListener("keydown",function(e) {
-				var target = e ? e.target : window.event.srcElement;
-				if ( target.id!=="email" && (target.nodeName.toLowerCase() === 'input' || target.nodeName.toLowerCase() === 'textarea') && target.className === "redBorder" && target.value === ""){
-				    var err = document.getElementById(target.id+"Error");
-					err.classList.add('hidden');
-					target.className = '';
-				    return false;
-				}
-			},true);
-			// function blur(e) {
-			// 	var target = e ? e.target : window.event.srcElement;
-			//     if ((target.id ==="fullName" || target.id ==="companyName" || target.id ==="messageError")   && (target.nodeName == 'INPUT' || target.nodeName == 'TEXTAREA')) {
-			//         target.className = '';
-			//     }
-			// }
-			// frm.addEventListener('blur', blur, true);
-			document.querySelector("#email").addEventListener("keyup", emailValidation);
 			var invalidInput = function(errMsg,frmInput){
 				errMsg.classList.remove('hidden');
 				frmInput.className = "redBorder";
@@ -338,6 +287,42 @@
 				errMsg.classList.add('hidden');
 				frmInput.className = "";
 			};
+			var emailValid =true,nameValid = true, companyValid = true, msgValid = true;
+			var emailValidation = function(data){
+				var emailInput = document.getElementById('email'), 
+					messageError = document.getElementById('emailError'),
+					hasClass = messageError.classList.contains('hidden'),
+					atpos = data.currentTarget.value.indexOf("@"),
+			    	dotpos = data.currentTarget.value.lastIndexOf(".");
+				if(data.currentTarget.value == "" && data.keyCode === 8 || data.keyCode === 46){
+					messageError.innerText = "Please fill out this field";
+					invalidInput(messageError,emailInput);
+					emailValid = false;
+				}
+				else if(atpos<1 || dotpos<atpos+2 || dotpos+2>=data.currentTarget.value.length){ 
+					messageError.innerText = "Please enter a valid email\n\"Example: NAME@DOMAIN.TLD\"";
+					invalidInput(messageError,emailInput);
+					emailValid = false;
+				}
+				else{
+					validInput(messageError,emailInput);
+					emailValid = true;
+				}
+				return emailValid;
+			};
+			// Get some contact us form, which contains anchor tags
+			var frm = document.getElementById('contact-form');
+			frm.addEventListener("keydown",function(e) {
+				// Firefox and IE access the target element different. e.target, and event.srcElement, respectively.
+				var target = e ? e.target : window.event.srcElement;
+				if ( target.id!=="email" && (target.nodeName.toLowerCase() === 'input' || target.nodeName.toLowerCase() === 'textarea') && target.className === "redBorder" && target.value === ""){
+				    var err = document.getElementById(target.id+"Error");
+					err.classList.add('hidden');
+					target.className = '';
+				    return false;
+				}
+			},true);
+			document.querySelector("#email").addEventListener("keyup", emailValidation);
 			var validateForm = function(){
 			var nameValid = true, companyValid = true, msgValid = true;
 			var frmName = document.getElementById("fullName"),
