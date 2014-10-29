@@ -1266,6 +1266,13 @@ input[name="fullName"], input[name="email"], input[name="companyName"], input[na
 	display: none;
 	visibility: hidden;
 }
+.focused{
+	border: 1px solid #3399CC;
+}
+.redBorder{
+	border-color: red !important;
+}
+
 button[btnSubmit]{
 	width: 60px;
 	line-height: 14px;

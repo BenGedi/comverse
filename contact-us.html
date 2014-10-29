@@ -8,7 +8,7 @@
 	<link rel="icon" type="image/png" href="img/logo_comverse_icon.ico">
 	<script src="js/contact-us.js"></script>
 </head>
-<body onload="setfocus()">
+<body>
 	<header id="comverse">
 		<div container>
 			<nav user-access-nav>
@@ -174,18 +174,18 @@
 						<fieldset>
 							<legend heading>Get in touch</legend>
 							<label for="fullName" >Full Name:</label>
-							<input type="text" id="fullName" name="fullName" tabindex="1" aria-required="”true”" required>
+							<input type="text" id="fullName" name="fullName" class="" tabindex="1" aria-required="”true”" required>
 							<span class="errorMessage hidden" id="fullNameError" aria-describedby="fullName" aria-hidden="true">Please fill out this field.</span>
 							<label for="email" >Email:</label>
-							<input type="email" id="email" name="email" tabindex="2" aria-required="”true”" required>
+							<input type="email" id="email" name="email" class="" tabindex="2" aria-required="”true”" required>
 							<span class="errorMessage hidden" id="emailError" aria-describedby="email" aria-hidden="true">Please fill out this field.</span>
 							<label for="companyName" >Company:</label>
-							<input type="text" id="companyName" name="companyName" tabindex="3" aria-required="”true”" required>
+							<input type="text" id="companyName" name="companyName" class="" tabindex="3" aria-required="”true”" required>
 							<span class="errorMessage hidden" id="companyNameError" aria-describedby="companyName" aria-hidden="true">Please fill out this field.</span>
 							<label for="phoneNum" >Phone: <span>(Optional)</span></label>
 							<input type="tel" id="phoneNum" name="phoneNum" tabindex="4">
 							<label for="frmMessage" >How can we help?</label>
-							<textarea name="message" id="message" cols="30" rows="10" tabindex="5" aria-required="”true”" required></textarea>
+							<textarea name="message" id="message" cols="30" rows="10" class="" tabindex="5" aria-required="”true”" required></textarea>
 							<span class="errorMessage hidden" id="messageError" aria-describedby="frmMessage" aria-hidden="true">Please fill out this field.</span>
 							<button btnSubmit type="submit" tabindex="6">SEND</button>
 						</fieldset>
@@ -279,7 +279,7 @@
 			</div>
 		</footer>
 		<script>
-			var valid = true,emailValid =true;
+			var emailValid =true;
 			var emailValidation = function(data){
 				var emailInput = document.getElementById('email'), 
 					messageError = document.getElementById('emailError'),
@@ -289,56 +289,57 @@
 				if(data.currentTarget.value == "" && data.keyCode === 8 || data.keyCode === 46){
 					messageError.innerText = "Please fill out this field";
 					messageError.classList.remove('hidden');
-					emailInput.style.borderColor = "red";
+					emailInput.className = "redBorder";
 					emailValid = false;
 				}
 				else if(atpos<1 || dotpos<atpos+2 || dotpos+2>=data.currentTarget.value.length){ 
 					messageError.innerText = "Please enter a valid email\n\"Example: NAME@DOMAIN.TLD\"";
 					messageError.classList.remove('hidden');
-					emailInput.style.borderColor = "red";
+					emailInput.className = "redBorder";
 					emailValid = false;
 				}
 				else{
 					messageError.classList.add('hidden');
-					emailInput.style.borderColor = "#d3d3d3";
+					emailInput.className = "";
 					emailValid = true;
 				}
 				return emailValid;
-			};
-			var isEmpty = function (data){
-				var err = document.getElementById(data.target.id+"Error");
-				if(data.currentTarget.value !== "" && data.target.style.borderColor ==="red"){
-					err.classList.add('hidden');
-					data.target.style.borderColor ="#d3d3d3";
-				}
 			};
 			// Get some contact us form, which contains anchor tags
 			var frm = document.getElementById('contact-form');
 			frm.addEventListener("focus",function(e) {
 			  // Firefox and IE access the target element different. e.target, and event.srcElement, respectively.
 			  var target = e ? e.target : window.event.srcElement;
-			  if ( target.id!=="email" && (target.nodeName.toLowerCase() === 'input' || target.nodeName.toLowerCase() === 'textarea') && target.style.borderColor === "red") {
-			  	target.addEventListener("keyup",function(){
-				    var err = document.getElementById(target.id+"Error");
-					if(target.value !== ""){
-						err.classList.add('hidden');
-						target.style.borderColor ="#3399CC";
-					}
-				    return false;
-			  	});
-			  }
+			  target.focus();
+			  return false;
 			},true);
-			 
-			function blur(event) {
-			    if (event.target.id!=="email" && (event.target.nodeName == 'INPUT' || event.target.nodeName == 'TEXTAREA')) {
-			        console.log(event.target.id);
-			        event.target.style.borderColor ="#d3d3d3";
-			    }
-			}
-			document.addEventListener('blur', blur, true);
+			frm.addEventListener("keydown",function(e) {
+				var target = e ? e.target : window.event.srcElement;
+				if ( target.id!=="email" && (target.nodeName.toLowerCase() === 'input' || target.nodeName.toLowerCase() === 'textarea') && target.className === "redBorder" && target.value === ""){
+				    var err = document.getElementById(target.id+"Error");
+					err.classList.add('hidden');
+					target.className = '';
+				    return false;
+				}
+			},true);
+			// function blur(e) {
+			// 	var target = e ? e.target : window.event.srcElement;
+			//     if ((target.id ==="fullName" || target.id ==="companyName" || target.id ==="messageError")   && (target.nodeName == 'INPUT' || target.nodeName == 'TEXTAREA')) {
+			//         target.className = '';
+			//     }
+			// }
+			// frm.addEventListener('blur', blur, true);
 			document.querySelector("#email").addEventListener("keyup", emailValidation);
-			// document.querySelector('input[type="text"]').addEventListener("keyup", isEmpty);
+			var invalidInput = function(errMsg,frmInput){
+				errMsg.classList.remove('hidden');
+				frmInput.className = "redBorder";
+			};
+			var validInput = function(errMsg,frmInput){
+				errMsg.classList.add('hidden');
+				frmInput.className = "";
+			};
 			var validateForm = function(){
+			var nameValid = true, companyValid = true, msgValid = true;
 			var frmName = document.getElementById("fullName"),
 							frmEmail = document.getElementById("email"),
 							frmCompany = document.getElementById("companyName"),
@@ -348,50 +349,40 @@
 							errCompany = document.getElementById("companyNameError"),
 							errMsg = document.getElementById("messageError");
 			if(frmName.value===""){
-				errName.classList.remove('hidden');
-				frmName.style.borderColor = "red";
-				valid = false;
+				invalidInput(errName,frmName);
+				nameValid = false;
 			}
 			else{
-				errName.classList.add('hidden');
-				frmName.style.borderColor = "#d3d3d3";
-				valid = true;
+				validInput(errName,frmName);
+				nameValid = true;
 			}
 			if(frmEmail.value ==="" || emailValid==false){
-				errEmail.classList.remove('hidden');
-				frmEmail.style.borderColor = "red";
-				valid = false;
+				invalidInput(errEmail,frmEmail);
 			}
 			else{
-				errEmail.classList.add('hidden');
-				frmEmail.style.borderColor = "#d3d3d3";
-				valid = true;
+				validInput(errEmail,frmEmail);
 			}
 			if(frmCompany.value===""){
-				errCompany.classList.remove('hidden');
-				frmCompany.style.borderColor = "red";
-				valid = false;
+				invalidInput(errCompany,frmCompany);
+				companyValid = false;
 			}
 			else{
-				errCompany.classList.add('hidden');
-				frmCompany.style.borderColor = "#d3d3d3";
-				valid = true;
+				validInput(errCompany,frmCompany);
+				companyValid = true;
 			}
 			if(frmMsg.value===""){
-				errMsg.classList.remove('hidden');
-				frmMsg.style.borderColor = "red";
-				valid = false;
+				invalidInput(errMsg,frmMsg);
+				msgValid = false;
 			}
 			else{
-				errMsg.classList.add('hidden');
-				frmMsg.style.borderColor = "#d3d3d3";
-				valid = true;
+				validInput(errMsg,frmMsg);
+				msgValid = true;
 			}
-			if((emailValid && valid)===true){
+			if((emailValid && nameValid &&  companyValid && msgValid)===true){
 				 document.getElementById('frmValidMsg').classList.remove('hidden');
 			}	
-
-			return emailValid && valid;
+			document.frmContact.fullName.focus();
+			return emailValid && nameValid &&  companyValid && msgValid;
 		};
 			var setfocus = function() {
 				document.frmContact.fullName.focus();
