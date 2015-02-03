@@ -1357,16 +1357,16 @@ button[btnSubmit]:hover{
 	}
 	[menu-dropdown]{
 		width: 768px;
-		left: -129px;
+		left: -128px;
 	}
 	li:hover [menu-dropdown="2"] {
 		left: -184%;
 	}
 	li:hover [menu-dropdown="3"] {
-		left: -312%;
+		left: -306%;
 	}
 	li:hover [menu-dropdown="4"] {
-		left: -335%;
+		left: -332%;
 	}
 	[dropdown-img] img{
 		padding-left: 30px;
